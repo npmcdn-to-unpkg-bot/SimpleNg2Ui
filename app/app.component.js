@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './leagues/league.services'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './standings/standings.component', './stats/stats.component', './schedules/schedules.component', './leagues/league.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, league_services_1;
+    var core_1, http_1, router_1, standings_component_1, stats_component_1, schedules_component_1, league_services_1;
     var AppComponent;
     return {
         setters:[
@@ -24,6 +24,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (standings_component_1_1) {
+                standings_component_1 = standings_component_1_1;
+            },
+            function (stats_component_1_1) {
+                stats_component_1 = stats_component_1_1;
+            },
+            function (schedules_component_1_1) {
+                schedules_component_1 = schedules_component_1_1;
+            },
             function (league_services_1_1) {
                 league_services_1 = league_services_1_1;
             }],
@@ -32,9 +41,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                 function AppComponent(_leagueService) {
                     this._leagueService = _leagueService;
                     this.menuItems = [
-                        { caption: 'Dashboard', link: ['Dashboard'] },
-                        { caption: 'Characters', link: ['Characters'] },
-                        { caption: 'Vehicles', link: ['Vehicles'] }
+                        { caption: 'Schedules', link: ['Schedules'] },
+                        { caption: 'Stats', link: ['Stats'] },
+                        { caption: 'Standings', link: ['Standings'] }
                     ];
                 }
                 AppComponent.prototype.getLeagues = function () {
@@ -52,9 +61,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                     core_1.Component({
                         selector: 'hockey-rink',
                         templateUrl: 'app/app.component.html',
+                        styleUrls: ['app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [http_1.HTTP_PROVIDERS, league_services_1.LeagueService]
-                    }), 
+                        providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, league_services_1.LeagueService]
+                    }),
+                    router_1.RouteConfig([
+                        { path: '/schedules', name: 'Schedules', component: schedules_component_1.SchedulesComponent, useAsDefault: true },
+                        { path: '/stats', name: 'Stats', component: stats_component_1.StatsComponent },
+                        { path: '/standings', name: 'Standings', component: standings_component_1.StandingsComponent },
+                    ]), 
                     __metadata('design:paramtypes', [league_services_1.LeagueService])
                 ], AppComponent);
                 return AppComponent;
