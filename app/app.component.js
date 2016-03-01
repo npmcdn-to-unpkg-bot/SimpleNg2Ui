@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './standings/standings.component', './stats/stats.component', './schedules/schedules.component', './data/data.services'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './standings/standings.component', './stats/stats.component', './schedules/schedules.component', './league/league.component', './data/data.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, standings_component_1, stats_component_1, schedules_component_1, data_services_1;
+    var core_1, http_1, router_1, standings_component_1, stats_component_1, schedules_component_1, league_component_1, data_services_1;
     var AppComponent;
     return {
         setters:[
@@ -32,6 +32,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             },
             function (schedules_component_1_1) {
                 schedules_component_1 = schedules_component_1_1;
+            },
+            function (league_component_1_1) {
+                league_component_1 = league_component_1_1;
             },
             function (data_services_1_1) {
                 data_services_1 = data_services_1_1;
@@ -61,7 +64,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                     core_1.Component({
                         selector: 'hockey-rink',
                         templateUrl: 'app/app.component.html',
-                        styleUrls: ['app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, data_services_1.DataService]
                     }),
@@ -69,6 +71,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                         { path: 'schedules', name: 'Schedules', component: schedules_component_1.SchedulesComponent, useAsDefault: true },
                         { path: 'stats', name: 'Stats', component: stats_component_1.StatsComponent },
                         { path: 'standings', name: 'Standings', component: standings_component_1.StandingsComponent },
+                        { path: 'league/:id', name: 'League', component: league_component_1.LeagueComponent }
                     ]), 
                     __metadata('design:paramtypes', [data_services_1.DataService])
                 ], AppComponent);

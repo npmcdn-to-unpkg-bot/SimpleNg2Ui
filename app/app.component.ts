@@ -6,12 +6,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 import {StandingsComponent} from './standings/standings.component'
 import {StatsComponent} from './stats/stats.component'
 import {SchedulesComponent} from './schedules/schedules.component'
+import {LeagueComponent} from './league/league.component'
 import { LeagueVm, DataService } from './data/data.services';
 
 @Component({
     selector: 'hockey-rink',
     templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, DataService]
 })
@@ -20,6 +20,7 @@ import { LeagueVm, DataService } from './data/data.services';
     { path: 'schedules', name: 'Schedules', component: SchedulesComponent, useAsDefault: true },
     { path: 'stats', name: 'Stats', component: StatsComponent },
     { path: 'standings', name: 'Standings', component: StandingsComponent },
+    { path: 'league/:id', name: 'League', component: LeagueComponent }
 ])
 
 export class AppComponent implements OnDestroy, OnInit {

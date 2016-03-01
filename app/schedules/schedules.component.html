@@ -1,20 +1,19 @@
 <h3>Schedules Page</h3>
 
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp fullwidth">
   <thead>
     <tr>
-      <th mdl-data-table__cell--non-numeric>Game</th>
-      <th>Home</th>
-      <th>Away</th>
-      <th></th>
+      <th class="mdl-data-table__cell--non-numeric full-width" >Game</th>
+      <th class="">Home</th>
+      <th class="">Away</th>
+
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="#game of schedule | async">
-      <td mdl-data-table__cell--non-numeric>{{game.title}}</td>
+      <td class="mdl-data-table__cell--non-numeric full-width">{{game.title}}</td>
       <td>{{game.homeTeam}}</td>
       <td>{{game.awayTeam}}</td>
-      <td></td>
     </tr>
   </tbody>
 </table>
