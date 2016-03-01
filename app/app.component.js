@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './standings/standings.component', './stats/stats.component', './schedules/schedules.component', './leagues/league.services'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './standings/standings.component', './stats/stats.component', './schedules/schedules.component', './data/data.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, standings_component_1, stats_component_1, schedules_component_1, league_services_1;
+    var core_1, http_1, router_1, standings_component_1, stats_component_1, schedules_component_1, data_services_1;
     var AppComponent;
     return {
         setters:[
@@ -33,13 +33,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             function (schedules_component_1_1) {
                 schedules_component_1 = schedules_component_1_1;
             },
-            function (league_services_1_1) {
-                league_services_1 = league_services_1_1;
+            function (data_services_1_1) {
+                data_services_1 = data_services_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_leagueService) {
-                    this._leagueService = _leagueService;
+                function AppComponent(_dataService) {
+                    this._dataService = _dataService;
                     this.menuItems = [
                         { caption: 'Schedules', link: ['Schedules'] },
                         { caption: 'Stats', link: ['Stats'] },
@@ -48,7 +48,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                 }
                 AppComponent.prototype.getLeagues = function () {
                     var _this = this;
-                    this._leagueService.getLeagues().subscribe(function (leagues) {
+                    this._dataService.getLeagues().subscribe(function (leagues) {
                         _this.leagues = leagues;
                     });
                 };
@@ -63,14 +63,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                         templateUrl: 'app/app.component.html',
                         styleUrls: ['app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, league_services_1.LeagueService]
+                        providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, data_services_1.DataService]
                     }),
                     router_1.RouteConfig([
-                        { path: '/schedules', name: 'Schedules', component: schedules_component_1.SchedulesComponent, useAsDefault: true },
-                        { path: '/stats', name: 'Stats', component: stats_component_1.StatsComponent },
-                        { path: '/standings', name: 'Standings', component: standings_component_1.StandingsComponent },
+                        { path: 'schedules', name: 'Schedules', component: schedules_component_1.SchedulesComponent, useAsDefault: true },
+                        { path: 'stats', name: 'Stats', component: stats_component_1.StatsComponent },
+                        { path: 'standings', name: 'Standings', component: standings_component_1.StandingsComponent },
                     ]), 
-                    __metadata('design:paramtypes', [league_services_1.LeagueService])
+                    __metadata('design:paramtypes', [data_services_1.DataService])
                 ], AppComponent);
                 return AppComponent;
             }());

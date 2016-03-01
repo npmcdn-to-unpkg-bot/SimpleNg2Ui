@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', '../data/data.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,28 +10,35 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, data_services_1;
     var SchedulesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (data_services_1_1) {
+                data_services_1 = data_services_1_1;
             }],
         execute: function() {
             SchedulesComponent = (function () {
-                function SchedulesComponent() {
+                function SchedulesComponent(_dataService) {
+                    this._dataService = _dataService;
                 }
-                SchedulesComponent.prototype.contructor = function () {
+                SchedulesComponent.prototype.getSchedule = function () {
+                    this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(258);
                 };
                 SchedulesComponent.prototype.ngOnInit = function () {
                     this.textSample = "Schedules";
+                    this.getSchedule();
                 };
                 SchedulesComponent = __decorate([
                     core_1.Component({
                         selector: 'schedules',
-                        templateUrl: 'app/schedules/schedules.component.html'
+                        templateUrl: 'app/schedules/schedules.component.html',
+                        providers: [data_services_1.DataService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [data_services_1.DataService])
                 ], SchedulesComponent);
                 return SchedulesComponent;
             }());

@@ -5,5 +5,5 @@ import {StatsComponent} from './stats/stats.component'
 import {SchedulesComponent} from './schedules/schedules.component'
 
 bootstrap(AppComponent, [])
-  .then(success => console.log(`Bootstrap success`))
-  .catch(error => console.log(error));
+    .then(success => console.log(`Bootstrap success`))
+    .catch(error => console.log(error));

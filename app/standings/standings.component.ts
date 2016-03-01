@@ -1,21 +1,27 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, provide, OnInit} from 'angular2/core';
+import { Observable, Subscription } from 'rxjs/Rx';
+import { StandingsVm, DataService } from '../data/data.services';
 
 @Component({
     selector: 'standings',
-    templateUrl: 'app/standings/standings.component.html'
+    templateUrl: 'app/standings/standings.component.html',
+    providers: [DataService]
 })
+export class StandingsComponent implements OnInit {
 
-export class StandingsComponent implements OnInit{
-    
+    public standings: Observable<StandingsVm[]>;
     public textSample: string;
-    
-    contructor(){
-        
+
+    constructor(private _dataService: DataService) { }
+
+    getStandings() {
+        this.standings = this._dataService.getStandingsByLeagueId(258);
     }
-    
+
     ngOnInit() {
         this.textSample = "Standings";
+        this.getStandings();
     }
-    
-    
+
+
 }
