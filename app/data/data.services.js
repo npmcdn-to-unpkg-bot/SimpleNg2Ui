@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1;
-    var weekScheduleUrl, baseUrl, DataService;
+    var baseUrl, DataService;
     return {
         setters:[
             function (core_1_1) {
@@ -21,7 +21,6 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 http_1 = http_1_1;
             }],
         execute: function() {
-            weekScheduleUrl = "http://api.watercityrollerhockey.com/api/v1/league/258/schedule/week";
             baseUrl = "http://api.watercityrollerhockey.com/api/v1/";
             DataService = (function () {
                 function DataService(_http) {

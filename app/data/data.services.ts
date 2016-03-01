@@ -2,7 +2,6 @@ import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
 
-let weekScheduleUrl = "http://api.watercityrollerhockey.com/api/v1/league/258/schedule/week";
 let baseUrl = "http://api.watercityrollerhockey.com/api/v1/";
 
 export interface LeagueVm {
@@ -55,6 +54,7 @@ export interface IDataService {
     getLeagues(): Observable<LeagueVm[]>;
     getStandingsByLeagueId(id: number): Observable<StandingsVm[]>;
     getStatsByLeagueId(id: number): Observable<StatsVm[]>;
+    getThisWeeksScheduleByLeagueId(id: number): Observable<ScheduleVm[]>;
 }
 
 @Injectable()
@@ -82,11 +82,11 @@ export class DataService implements IDataService {
             .map((response: Response) => <StatsVm[]>response.json());
     }
 
-    getThisWeeksScheduleByLeagueId(id: number){
-      let scheduleUrl = baseUrl + `league/${id}/schedule/week`;
-      console.log(scheduleUrl);
-      return this._http.get(scheduleUrl)
-          .map((response: Response) => <ScheduleVm[]>response.json());
+    getThisWeeksScheduleByLeagueId(id: number) {
+        let scheduleUrl = baseUrl + `league/${id}/schedule/week`;
+        console.log(scheduleUrl);
+        return this._http.get(scheduleUrl)
+            .map((response: Response) => <ScheduleVm[]>response.json());
     }
 
 }
