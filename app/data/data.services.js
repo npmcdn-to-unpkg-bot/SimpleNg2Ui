@@ -26,6 +26,11 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 function DataService(_http) {
                     this._http = _http;
                 }
+                DataService.prototype.getAllTimeStats = function () {
+                    var allTimeStatsUrl = baseUrl + "player/stats/alltime";
+                    return this._http.get(allTimeStatsUrl)
+                        .map(function (response) { return response.json(); });
+                };
                 DataService.prototype.getLeagueById = function (id) {
                     var leagueUrl = baseUrl + ("league/" + id);
                     return this._http.get(leagueUrl)

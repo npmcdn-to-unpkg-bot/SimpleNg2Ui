@@ -1,5 +1,29 @@
 <div class="mdl-grid">
 
+
+    <filter-text (changed)="filterChanged($event)"></filter-text>
+
+
+  <table class="mdl-data-table mdl-shadow--2dp full-width">
+    <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric full-width">Player</th>
+        <th>GOALS</th>
+        <th>ASSISTS</th>
+        <th>POINTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="#stat of stats | async">
+        <td class="mdl-data-table__cell--non-numeric full-width">{{stat.name}}</td>
+        <td>{{stat.goals}}</td>
+        <td>{{stat.assists}}</td>
+        <td>{{stat.points}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <div class="android-navigation-container">
     <nav class="android-navigation mdl-navigation">
       <a *ngFor="#league of leagues | async" [routerLink]="['League', {id: league.id}]" class="mdl-navigation__link mdl-typography--text-uppercase" href="">{{league.name}}</a>
@@ -8,11 +32,11 @@
 
   <div class="mdl-cell mdl-cell--3-col" *ngFor="#league of leagues | async">
     <a [routerLink]="['League', {id: league.id}]">Google</a>
-</div>
+  </div>
 
   <div class="mdl-cell mdl-cell--3-col" *ngFor="#league of leagues | async" (click)="gotoLeague(league)">
     <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-    # {{league.name}}
+      # {{league.name}}
     </button>
   </div>
 

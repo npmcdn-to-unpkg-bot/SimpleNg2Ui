@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../data/data.services', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', '../data/data.services', 'angular2/router', '../blocks/filter-text/filter-text.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../data/data.services', 'angular2/router'], f
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_services_1, router_1;
+    var core_1, data_services_1, router_1, filter_text_component_1;
     var MainComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', '../data/data.services', 'angular2/router'], f
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (filter_text_component_1_1) {
+                filter_text_component_1 = filter_text_component_1_1;
             }],
         execute: function() {
             MainComponent = (function () {
@@ -29,6 +32,10 @@ System.register(['angular2/core', '../data/data.services', 'angular2/router'], f
                     this._dataService = _dataService;
                     this._router = _router;
                 }
+                MainComponent.prototype.filterChanged = function (searchText) {
+                    console.log(searchText);
+                    //this.filteredVehicles = this._filterService.filter(searchText, ['id', 'name', 'type'], this.vehicles);
+                };
                 MainComponent.prototype.getLeagues = function () {
                     this.leagues = this._dataService.getLeagues();
                 };
@@ -38,14 +45,18 @@ System.register(['angular2/core', '../data/data.services', 'angular2/router'], f
                     this._router.navigate(link);
                     event.preventDefault();
                 };
+                MainComponent.prototype.getAllTimeStats = function () {
+                    this.stats = this._dataService.getAllTimeStats();
+                };
                 MainComponent.prototype.ngOnInit = function () {
                     this.getLeagues();
+                    this.getAllTimeStats();
                 };
                 MainComponent = __decorate([
                     core_1.Component({
                         selector: 'main',
                         templateUrl: 'app/main/main.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, filter_text_component_1.FilterTextComponent],
                         providers: [router_1.ROUTER_PROVIDERS, data_services_1.DataService]
                     }), 
                     __metadata('design:paramtypes', [data_services_1.DataService, router_1.Router])

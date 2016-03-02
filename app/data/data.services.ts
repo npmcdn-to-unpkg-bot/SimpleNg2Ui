@@ -56,6 +56,7 @@ export interface IDataService {
     getStandingsByLeagueId(id: number): Observable<StandingsVm[]>;
     getStatsByLeagueId(id: number): Observable<StatsVm[]>;
     getThisWeeksScheduleByLeagueId(id: number): Observable<ScheduleVm[]>;
+    getAllTimeStats(): Observable<StatsVm[]>;
 }
 
 @Injectable()
@@ -63,10 +64,16 @@ export class DataService implements IDataService {
 
     constructor(private _http: Http) { }
 
-    getLeagueById(id: number){
-      let leagueUrl = baseUrl + `league/${id}`;
-      return this._http.get(leagueUrl)
-          .map((response: Response) => <LeagueVm>response.json());
+    getAllTimeStats() {
+        let allTimeStatsUrl = baseUrl + "player/stats/alltime";
+        return this._http.get(allTimeStatsUrl)
+            .map((response: Response) => <StatsVm[]>response.json());
+    }
+
+    getLeagueById(id: number) {
+        let leagueUrl = baseUrl + `league/${id}`;
+        return this._http.get(leagueUrl)
+            .map((response: Response) => <LeagueVm>response.json());
     }
 
     getLeagues() {
