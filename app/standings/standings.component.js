@@ -26,12 +26,16 @@ System.register(['angular2/core', '../data/data.services'], function(exports_1, 
                     this._dataService = _dataService;
                 }
                 StandingsComponent.prototype.getStandings = function () {
-                    this.standings = this._dataService.getStandingsByLeagueId(258);
+                    this.standings = this._dataService.getStandingsByLeagueId(this.leagueId);
                 };
                 StandingsComponent.prototype.ngOnInit = function () {
                     this.textSample = "Standings";
                     this.getStandings();
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Number)
+                ], StandingsComponent.prototype, "leagueId", void 0);
                 StandingsComponent = __decorate([
                     core_1.Component({
                         selector: 'standings',

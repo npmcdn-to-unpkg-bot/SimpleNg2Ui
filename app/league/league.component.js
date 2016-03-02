@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../data/data.services'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../data/data.services', '../test/test.component', '../stats/stats.component', '../standings/standings.component', '../schedules/schedules.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,39 +10,57 @@ System.register(['angular2/core', '../data/data.services'], function(exports_1, 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_services_1;
+    var core_1, router_1, data_services_1, test_component_1, stats_component_1, standings_component_1, schedules_component_1;
     var LeagueComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (data_services_1_1) {
                 data_services_1 = data_services_1_1;
+            },
+            function (test_component_1_1) {
+                test_component_1 = test_component_1_1;
+            },
+            function (stats_component_1_1) {
+                stats_component_1 = stats_component_1_1;
+            },
+            function (standings_component_1_1) {
+                standings_component_1 = standings_component_1_1;
+            },
+            function (schedules_component_1_1) {
+                schedules_component_1 = schedules_component_1_1;
             }],
         execute: function() {
             LeagueComponent = (function () {
-                function LeagueComponent(_dataService) {
+                function LeagueComponent(_dataService, _router, _routeParams) {
                     this._dataService = _dataService;
+                    this._router = _router;
+                    this._routeParams = _routeParams;
                 }
-                //getSchedule() {
-                //    this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(258);
-                //}
-                LeagueComponent.prototype.ngOnInit = function () {
-                    this.textSample = "Schedules";
-                    //this.getSchedule();
+                LeagueComponent.prototype.getLeague = function (leagueId) {
+                    var _this = this;
+                    this._dataService.getLeagueById(leagueId)
+                        .subscribe(function (l) {
+                        _this.leagueObj = l;
+                    });
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], LeagueComponent.prototype, "id", void 0);
+                LeagueComponent.prototype.ngOnInit = function () {
+                    this.leagueId = +this._routeParams.get('id');
+                    this.getLeague(this.leagueId);
+                };
                 LeagueComponent = __decorate([
                     core_1.Component({
                         selector: 'league',
+                        directives: [test_component_1.TestComponent, stats_component_1.StatsComponent, standings_component_1.StandingsComponent, schedules_component_1.SchedulesComponent],
                         templateUrl: 'app/league/league.component.html',
                         providers: [data_services_1.DataService]
                     }), 
-                    __metadata('design:paramtypes', [data_services_1.DataService])
+                    __metadata('design:paramtypes', [data_services_1.DataService, router_1.Router, router_1.RouteParams])
                 ], LeagueComponent);
                 return LeagueComponent;
             }());

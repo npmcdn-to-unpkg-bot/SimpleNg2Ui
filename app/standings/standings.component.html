@@ -1,18 +1,18 @@
 <h3>Standings Page</h3>
 
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<table class="mdl-data-table mdl-shadow--2dp full-width">
   <thead>
     <tr>
-      <th mdl-data-table__cell--non-numeric>Team</th>
-      <th>W</th>
-      <th>L</th>
-      <th>T</th>
-      <th>P</th>
+      <th class="mdl-data-table__cell--non-numeric full-width">TEAM</th>
+      <th>WINS</th>
+      <th>LOSS</th>
+      <th>OTL</th>
+      <th>POINTS</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="#standing of standings | async">
-      <td mdl-data-table__cell--non-numeric>{{standing.name}}</td>
+      <td class="mdl-data-table__cell--non-numeric full-width">{{standing.name}}</td>
       <td>{{standing.wins}}</td>
       <td>{{standing.loss}}</td>
       <td>{{standing.otl}}</td>

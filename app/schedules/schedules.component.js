@@ -26,12 +26,16 @@ System.register(['angular2/core', '../data/data.services'], function(exports_1, 
                     this._dataService = _dataService;
                 }
                 SchedulesComponent.prototype.getSchedule = function () {
-                    this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(258);
+                    this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(this.leagueId);
                 };
                 SchedulesComponent.prototype.ngOnInit = function () {
                     this.textSample = "Schedules";
                     this.getSchedule();
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Number)
+                ], SchedulesComponent.prototype, "leagueId", void 0);
                 SchedulesComponent = __decorate([
                     core_1.Component({
                         selector: 'schedules',

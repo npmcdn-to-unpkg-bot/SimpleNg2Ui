@@ -1,29 +1,38 @@
 import { Component, provide, OnInit, Input } from 'angular2/core';
+import { RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import { Observable, Subscription } from 'rxjs/Rx';
-import { ScheduleVm, DataService } from '../data/data.services';
+import { LeagueVm, DataService } from '../data/data.services';
+import { TestComponent } from '../test/test.component';
+import { StatsComponent } from '../stats/stats.component';
+import { StandingsComponent } from '../standings/standings.component';
+import { SchedulesComponent } from '../schedules/schedules.component';
 
 @Component({
-    selector: 'league',
-    templateUrl: 'app/league/league.component.html',
-    providers: [DataService]
+  selector: 'league',
+  directives: [TestComponent, StatsComponent, StandingsComponent, SchedulesComponent],
+  templateUrl: 'app/league/league.component.html',
+  providers: [DataService]
 })
 
 export class LeagueComponent implements OnInit {
 
-    //public schedule: Observable<ScheduleVm[]>;
-    @Input() id: string;
-    public textSample: string;
+  public leagueId: number;
+  public leagueObj: LeagueVm;
 
-    constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService,
+    private _router: Router,
+    private _routeParams: RouteParams) { }
 
-    //getSchedule() {
-    //    this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(258);
-    //}
+  getLeague(leagueId: number) {
+    this._dataService.getLeagueById(leagueId)
+      .subscribe(l => {
+      this.leagueObj = l;
+    });
+  }
 
-    ngOnInit() {
-        this.textSample = "Schedules";
-        //this.getSchedule();
-    }
-
+  ngOnInit() {
+    this.leagueId = +this._routeParams.get('id');
+    this.getLeague(this.leagueId);
+  }
 
 }

@@ -1,1 +1,7 @@
-<h3>League View</h3>
+<div *ngIf="leagueObj">
+  <h3>{{leagueObj.name|uppercase}}</h3>
+  <schedules leagueId="{{leagueObj.id}}"></schedules>
+  <standings leagueId="{{leagueObj.id}}"></standings>
+  <stats leagueId="{{leagueObj.id}}"></stats>
+  <tester title="{{leagueObj.id}}"></tester>
+</div>

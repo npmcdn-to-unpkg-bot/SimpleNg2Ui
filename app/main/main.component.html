@@ -1,0 +1,19 @@
+<div class="mdl-grid">
+
+  <div class="android-navigation-container">
+    <nav class="android-navigation mdl-navigation">
+      <a *ngFor="#league of leagues | async" [routerLink]="['League', {id: league.id}]" class="mdl-navigation__link mdl-typography--text-uppercase" href="">{{league.name}}</a>
+    </nav>
+  </div>
+
+  <div class="mdl-cell mdl-cell--3-col" *ngFor="#league of leagues | async">
+    <a [routerLink]="['League', {id: league.id}]">Google</a>
+</div>
+
+  <div class="mdl-cell mdl-cell--3-col" *ngFor="#league of leagues | async" (click)="gotoLeague(league)">
+    <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    # {{league.name}}
+    </button>
+  </div>
+
+</div>

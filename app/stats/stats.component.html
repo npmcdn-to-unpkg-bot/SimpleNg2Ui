@@ -1,17 +1,17 @@
 <h3>Stats Page</h3>
 
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<table class="mdl-data-table mdl-shadow--2dp full-width">
   <thead>
     <tr>
-      <th mdl-data-table__cell--non-numeric>Player</th>
-      <th>G</th>
-      <th>A</th>
-      <th>P</th>
+      <th class="mdl-data-table__cell--non-numeric full-width">Player</th>
+      <th>GOALS</th>
+      <th>ASSISTS</th>
+      <th>POINTS</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="#stat of stats | async">
-      <td mdl-data-table__cell--non-numeric>{{stat.name}}</td>
+      <td class="mdl-data-table__cell--non-numeric full-width">{{stat.name}}</td>
       <td>{{stat.goals}}</td>
       <td>{{stat.assists}}</td>
       <td>{{stat.points}}</td>

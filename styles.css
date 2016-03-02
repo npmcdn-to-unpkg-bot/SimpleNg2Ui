@@ -161,7 +161,7 @@ a img{
 
   .android-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
+    background: #000;
     height: 160px;
   }
 
@@ -474,8 +474,8 @@ a img{
   .android-mobile-title {
     display: block !important;
     position: absolute;
+     top: 12px;
     left: calc(50% - 70px);
-    top: 12px;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -542,4 +542,15 @@ a img{
 
 .full-width {
     width: 100%;
+}
+
+.body-background{
+  background-color: #efefef;
+}
+
+.hockey-content-body{
+  border-radius: 2px;
+  padding: 0px 120px;
+  padding-bottom: 50px;
+  margin-bottom: 80px;
 }

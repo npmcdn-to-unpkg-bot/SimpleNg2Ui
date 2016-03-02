@@ -26,6 +26,11 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 function DataService(_http) {
                     this._http = _http;
                 }
+                DataService.prototype.getLeagueById = function (id) {
+                    var leagueUrl = baseUrl + ("league/" + id);
+                    return this._http.get(leagueUrl)
+                        .map(function (response) { return response.json(); });
+                };
                 DataService.prototype.getLeagues = function () {
                     var leaguesUrl = baseUrl + "league";
                     return this._http.get(leaguesUrl)

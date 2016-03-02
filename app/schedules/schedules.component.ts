@@ -1,4 +1,4 @@
-import { Component, provide, OnInit } from 'angular2/core';
+import { Component, provide, OnInit, Input } from 'angular2/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { ScheduleVm, DataService } from '../data/data.services';
 
@@ -10,19 +10,19 @@ import { ScheduleVm, DataService } from '../data/data.services';
 
 export class SchedulesComponent implements OnInit {
 
+    @Input() leagueId: number;
     public schedule: Observable<ScheduleVm[]>;
     public textSample: string;
 
     constructor(private _dataService: DataService) { }
 
     getSchedule() {
-        this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(258);
+        this.schedule = this._dataService.getThisWeeksScheduleByLeagueId(this.leagueId);
     }
 
     ngOnInit() {
         this.textSample = "Schedules";
         this.getSchedule();
     }
-
 
 }

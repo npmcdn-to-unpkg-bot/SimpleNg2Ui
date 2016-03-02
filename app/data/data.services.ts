@@ -51,6 +51,7 @@ export interface ScheduleVm {
 }
 
 export interface IDataService {
+    getLeagueById(id: number): Observable<LeagueVm>;
     getLeagues(): Observable<LeagueVm[]>;
     getStandingsByLeagueId(id: number): Observable<StandingsVm[]>;
     getStatsByLeagueId(id: number): Observable<StatsVm[]>;
@@ -61,6 +62,12 @@ export interface IDataService {
 export class DataService implements IDataService {
 
     constructor(private _http: Http) { }
+
+    getLeagueById(id: number){
+      let leagueUrl = baseUrl + `league/${id}`;
+      return this._http.get(leagueUrl)
+          .map((response: Response) => <LeagueVm>response.json());
+    }
 
     getLeagues() {
         let leaguesUrl = baseUrl + `league`;
