@@ -3,11 +3,12 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import 'rxjs/Rx';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
-import {MainComponent} from './main/main.component'
-import {StandingsComponent} from './standings/standings.component'
-import {StatsComponent} from './stats/stats.component'
-import {SchedulesComponent} from './schedules/schedules.component'
-import {LeagueComponent} from './league/league.component'
+import {MainComponent} from './main/main.component';
+import {StandingsComponent} from './standings/standings.component';
+import {StatsComponent} from './stats/stats.component';
+import {SchedulesComponent} from './schedules/schedules.component';
+import {LeagueComponent} from './league/league.component';
+import {PlayerComponent} from './player/player.component';
 import { LeagueVm, DataService } from './data/data.services';
 
 @Component({
@@ -19,7 +20,8 @@ import { LeagueVm, DataService } from './data/data.services';
 
 @RouteConfig([
     { path: '/', name: 'Main', component: MainComponent, useAsDefault: true },
-    { path: '/league/:id', name: 'League', component: LeagueComponent }
+    { path: '/league/:id', name: 'League', component: LeagueComponent },
+    { path: '/player/:id', name: 'Player', component: PlayerComponent}
 ])
 
 export class AppComponent implements OnInit {

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './main/main.component', './league/league.component', './data/data.services'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './main/main.component', './league/league.component', './player/player.component', './data/data.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, main_component_1, league_component_1, data_services_1;
+    var core_1, http_1, router_1, main_component_1, league_component_1, player_component_1, data_services_1;
     var AppComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             },
             function (league_component_1_1) {
                 league_component_1 = league_component_1_1;
+            },
+            function (player_component_1_1) {
+                player_component_1 = player_component_1_1;
             },
             function (data_services_1_1) {
                 data_services_1 = data_services_1_1;
@@ -56,7 +59,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'Main', component: main_component_1.MainComponent, useAsDefault: true },
-                        { path: '/league/:id', name: 'League', component: league_component_1.LeagueComponent }
+                        { path: '/league/:id', name: 'League', component: league_component_1.LeagueComponent },
+                        { path: '/player/:id', name: 'Player', component: player_component_1.PlayerComponent }
                     ]), 
                     __metadata('design:paramtypes', [data_services_1.DataService])
                 ], AppComponent);

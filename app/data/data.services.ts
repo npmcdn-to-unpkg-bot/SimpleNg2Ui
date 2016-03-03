@@ -50,6 +50,14 @@ export interface ScheduleVm {
     id: number;
 }
 
+export interface PlayerVm {
+  fullName: string;
+  firstName: string;
+  lastName: string;
+  id: number;
+}
+
+
 export interface IDataService {
     getLeagueById(id: number): Observable<LeagueVm>;
     getLeagues(): Observable<LeagueVm[]>;
@@ -57,12 +65,19 @@ export interface IDataService {
     getStatsByLeagueId(id: number): Observable<StatsVm[]>;
     getThisWeeksScheduleByLeagueId(id: number): Observable<ScheduleVm[]>;
     getAllTimeStats(): Observable<StatsVm[]>;
+    getPlayerById(id:number): Observable<PlayerVm>;
 }
 
 @Injectable()
 export class DataService implements IDataService {
 
     constructor(private _http: Http) { }
+
+    getPlayerById(id: number) {
+      let playerUrl = baseUrl + `member/${id}`;
+      return this._http.get(playerUrl)
+          .map((response: Response) => <PlayerVm>response.json());
+    }
 
     getAllTimeStats() {
         let allTimeStatsUrl = baseUrl + "player/stats/alltime";

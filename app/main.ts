@@ -6,6 +6,7 @@ import {StatsComponent} from './stats/stats.component'
 import {SchedulesComponent} from './schedules/schedules.component'
 import {LeagueComponent} from './league/league.component'
 import {TestComponent} from './test/test.component'
+import {PlayerComponent} from './player/player.component'
 
 bootstrap(AppComponent, [])
     .then(success => console.log(`Bootstrap success`))
